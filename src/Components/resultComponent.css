@@ -1,0 +1,9 @@
+.result {
+  max-width: 400px;
+  text-align: left;
+  font-size: 2.2em;
+}
+
+.result p {
+  margin: 5px;
+}

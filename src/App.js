@@ -1,28 +1,71 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import KeypadComponent from './Components/keypadComponent';
+import ResultComponent from './Components/resultComponent'
 
-class App extends Component {
+// VARS
+
+// Components
+
+class Calculator extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      result: ''
+    }
+
+  }
+
+  onClick = (button) => {
+    if (button === '='){
+      this.calculate()
+    } else if (button === 'C') {
+      this.backSpace()
+    } else if (button === 'CE') {
+      this.reset()
+    } else {
+      this.setState({result: this.state.result + button})
+    }
+  }
+
+  calculate = () => {
+    try {
+      this.setState({
+        //eslint-disable-next-line
+        result: (eval(this.state.result) || '') + ''
+      })
+    } catch (e) {
+      this.setState({
+        result: 'error'
+      })
+    }
+  };
+
+  reset = () => {
+    this.setState({
+      result: ''
+    })
+  };
+
+
+  backSpace = () => {
+    this.setState({
+      result: this.state.result.slice(0, -1)
+    })
+  }
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='container'>
+        <div className='calculator-body'>
+          <h1>Calculator</h1>
+          <ResultComponent result={this.state.result} />
+          <KeypadComponent onClick={this.onClick} />
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default Calculator;
