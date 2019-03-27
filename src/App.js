@@ -3,10 +3,6 @@ import './App.css';
 import KeypadComponent from './Components/keypadComponent';
 import ResultComponent from './Components/resultComponent'
 
-// VARS
-
-// Components
-
 class Calculator extends Component {
   constructor (props) {
     super(props);
@@ -32,7 +28,7 @@ class Calculator extends Component {
     try {
       this.setState({
         //eslint-disable-next-line
-        result: (eval(this.state.result) || '') + ''
+        result: (eval(this.state.result) ) 
       })
     } catch (e) {
       this.setState({
