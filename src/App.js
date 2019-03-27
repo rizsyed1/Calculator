@@ -7,8 +7,13 @@ class Calculator extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      result: ''
+      result: ' '
     }
+
+    this.onClick = this.onClick.bind(this);
+    this.calculate = this.calculate.bind(this);
+    this.reset = this.reset.bind(this);
+    this.backSpace = this.backSpace.bind(this);
 
   }
 
@@ -28,7 +33,7 @@ class Calculator extends Component {
     try {
       this.setState({
         //eslint-disable-next-line
-        result: (eval(this.state.result) || '') 
+        result: (eval(this.state.result) || '')
       })
     } catch (e) {
       this.setState({
@@ -45,9 +50,13 @@ class Calculator extends Component {
 
 
   backSpace = () => {
-    this.setState({
-      result: this.state.result.slice(0, -1)
-    })
+    if (this.state.result === ''){
+      return
+    } else {
+      this.setState({
+        result: this.state.result.slice(0, -1)
+      })
+    }
   }
 
 
