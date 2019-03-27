@@ -28,7 +28,7 @@ class Calculator extends Component {
     try {
       this.setState({
         //eslint-disable-next-line
-        result: (eval(this.state.result) ) 
+        result: (eval(this.state.result) || '') 
       })
     } catch (e) {
       this.setState({
