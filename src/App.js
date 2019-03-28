@@ -10,11 +10,6 @@ class Calculator extends Component {
       result: ' '
     }
 
-    this.onClick = this.onClick.bind(this);
-    this.calculate = this.calculate.bind(this);
-    this.reset = this.reset.bind(this);
-    this.backSpace = this.backSpace.bind(this);
-
   }
 
   onClick = (button) => {
